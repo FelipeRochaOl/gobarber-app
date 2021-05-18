@@ -56,7 +56,7 @@ const Profile: React.FC = () => {
       <Header>
         <HeaderTitle>
           Bem vindo, {'\n'}
-          <UserName>user.name</UserName>
+          <UserName>{user.name}</UserName>
         </HeaderTitle>
 
         <ProfileButton onPress={navigateToProfile}>

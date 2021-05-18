@@ -76,13 +76,8 @@ const Profile: React.FC = () => {
 
         await schema.validate(data, { abortEarly: false })
 
-        const {
-          name,
-          email,
-          old_password,
-          password,
-          password_confirmation,
-        } = data
+        const { name, email, old_password, password, password_confirmation } =
+          data
 
         const newObject = {
           name,

@@ -12,6 +12,8 @@ import {
   UserName,
   ProfileButton,
   UserAvatar,
+  SignOutButton,
+  SignOutText,
   ProvidersList,
   ProviderListTitle,
   ProviderContainer,
@@ -56,41 +58,43 @@ const Profile: React.FC = () => {
       <Header>
         <HeaderTitle>
           Bem vindo, {'\n'}
-          <UserName>{user.name}</UserName>
+          <UserName>{user.name}</UserName> {'\n'}
         </HeaderTitle>
 
         <ProfileButton onPress={navigateToProfile}>
           <UserAvatar source={{ uri: user.avatar_url }} />
         </ProfileButton>
-
-        <ProvidersList
-          data={providers}
-          keyExtractor={provider => provider.id}
-          ListHeaderComponent={
-            <ProviderListTitle>Cabeleireiros</ProviderListTitle>
-          }
-          renderItem={({ item: provider }) => (
-            <ProviderContainer
-              onPress={() => navigateToCreateAppointment(provider.id)}>
-              <ProviderAvatar source={{ uri: provider.avatar_url }} />
-
-              <ProviderInfo>
-                <ProviderName>{provider.name}</ProviderName>
-
-                <ProviderMeta>
-                  <Icon name="calendar" size={14} color="#ff9000" />
-                  <ProviderMetaText>Segunda à sexta</ProviderMetaText>
-                </ProviderMeta>
-
-                <ProviderMeta>
-                  <Icon name="clock" size={14} color="#ff9000" />
-                  <ProviderMetaText>8h às 18h</ProviderMetaText>
-                </ProviderMeta>
-              </ProviderInfo>
-            </ProviderContainer>
-          )}
-        />
       </Header>
+      <ProvidersList
+        data={providers}
+        keyExtractor={provider => provider.id}
+        ListHeaderComponent={
+          <ProviderListTitle>Cabeleireiros</ProviderListTitle>
+        }
+        renderItem={({ item: provider }) => (
+          <ProviderContainer
+            onPress={() => navigateToCreateAppointment(provider.id)}>
+            <ProviderAvatar source={{ uri: provider.avatar_url }} />
+
+            <ProviderInfo>
+              <ProviderName>{provider.name}</ProviderName>
+
+              <ProviderMeta>
+                <Icon name="calendar" size={14} color="#ff9000" />
+                <ProviderMetaText>Segunda à sexta</ProviderMetaText>
+              </ProviderMeta>
+
+              <ProviderMeta>
+                <Icon name="clock" size={14} color="#ff9000" />
+                <ProviderMetaText>8h às 18h</ProviderMetaText>
+              </ProviderMeta>
+            </ProviderInfo>
+          </ProviderContainer>
+        )}
+      />
+      <SignOutButton onPress={signOut}>
+        <SignOutText>Sair</SignOutText>
+      </SignOutButton>
     </Container>
   )
 }

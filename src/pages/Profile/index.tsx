@@ -116,22 +116,22 @@ const Profile: React.FC = () => {
   )
 
   const handleUpdateAvatar = useCallback(() => {
-    ImagePicker.launchImageLibrary(
+    ImagePicker.showImagePicker(
       {
-        mediaType: 'photo',
-        quality: 1,
+        title: 'Selecione um avatar',
+        cancelButtonTitle: 'Cancelar',
+        takePhotoButtonTitle: 'Usar câmera',
+        chooseFromLibraryButtonTitle: 'Escolher da galeria',
       },
       response => {
         if (response.didCancel) {
           return
         }
 
-        if (response.errorCode) {
+        if (response.error) {
           Alert.alert('Erro ao atualizar seu avatar')
           return
         }
-
-        const source = { uri: response.uri }
 
         const data = new FormData()
 

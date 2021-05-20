@@ -141,7 +141,7 @@ const Profile: React.FC = () => {
           uri: response.uri,
         })
 
-        api.patch('user/avatar', data).then(responseApi => {
+        api.patch('users/avatar', data).then(responseApi => {
           updateUser(responseApi.data)
         })
       },
